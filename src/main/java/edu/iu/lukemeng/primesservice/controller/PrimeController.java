@@ -1,7 +1,10 @@
 package edu.iu.lukemeng.primesservice.controller;
 
+import edu.iu.lukemeng.primesservice.model.Customer;
 import edu.iu.lukemeng.primesservice.service.IPrimesService;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @CrossOrigin
@@ -17,5 +20,8 @@ public class PrimeController {
     public boolean isPrime(@PathVariable int n) {
         return primesService.isPrime(n);
     }
+
+
+
 }
 

@@ -1,2 +1,4 @@
-package edu.iu.lukemeng.primesservice.repository;public class findByUsername {
+package edu.iu.lukemeng.primesservice.repository;
+
+public class findByUsername {
 }
