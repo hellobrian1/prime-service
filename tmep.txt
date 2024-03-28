@@ -16,13 +16,13 @@ import java.io.IOException;
 
 @RestController
 public class AuthenticationController {
-    private final IAuthenticationService authenticationService;
-    private final AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     private TokenService tokenService;
-    public AuthenticationController(AuthenticationManager authenticationManager, IAuthenticationService authenticationService, TokenService tokenService) {
+    private IAuthenticationService authenticationService;
+
+    public AuthenticationController(AuthenticationManager authenticationManager, IAuthenticationService authenticationService) {
         this.authenticationManager = authenticationManager;
         this.authenticationService = authenticationService;
-        this.tokenService = tokenService;
     }
 
     @PostMapping("/register")
@@ -40,10 +40,13 @@ public class AuthenticationController {
                 .authenticate(
                         new UsernamePasswordAuthenticationToken(
                                 customer.getUsername(),
-                                customer.getPassword()));
-
-        return tokenService.generateToken(authentication);
+                                customer.getPassword()
+                        )
+                );
+        return "Success!";
     }
 
-
+    public AuthenticationController(IAuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
 }
